@@ -19,7 +19,11 @@ export default function Home() {
   };
 
   const focusOnFirstInput = () => {
-    document.getElementsByTagName("input")?.[0]?.focus();
+    const input = document.getElementsByTagName("input")?.[0];
+    if (input) {
+      input?.focus();
+      input.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -34,7 +38,7 @@ export default function Home() {
         </Button>
         <Form onSubmit={generateCoverLetter} userInfo={userInfo} />
       </section>
-      <footer className="px-4 font-medium py-6 text-slate-700 flex justify-between items-center border-t-2 border-black/5">
+      <footer className="px-4 mt-16 font-medium py-6 text-slate-700 flex justify-between items-center border-t-2 border-black/5">
         <p>
           Created By{" "}
           <a
