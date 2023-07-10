@@ -17,6 +17,7 @@ type BaseInputProps = Partial<
     | "maxLength"
     | "placeholder"
     | "required"
+    | "disabled"
   >
 >;
 
