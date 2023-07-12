@@ -18,6 +18,7 @@ export interface UserInfo {
   hiringManagerName?: string;
   whyThisRole?: string;
   additionalInfo?: string;
+  temperature?: number;
 }
 
 const inputs: input[] = [
