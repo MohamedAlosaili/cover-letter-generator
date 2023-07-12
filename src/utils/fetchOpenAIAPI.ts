@@ -1,5 +1,21 @@
 import { UserInfo } from "@/inputs";
-import { OpenAIStreamPayload } from "./types";
+
+interface ChatGPTMessage {
+  role: "user" | "system";
+  content: string;
+}
+
+interface OpenAIStreamPayload {
+  model: string;
+  messages: ChatGPTMessage[];
+  temperature: number;
+  top_p: number;
+  frequency_penalty: number;
+  presence_penalty: number;
+  max_tokens: number;
+  stream: boolean;
+  n: number;
+}
 
 const fetchAPI = async (userInfo: UserInfo, API_KEY: string | undefined) => {
   const OPENAI_API_KEY = API_KEY ?? process.env.OPENAI_KEY;
