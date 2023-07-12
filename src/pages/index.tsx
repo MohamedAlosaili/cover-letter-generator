@@ -1,4 +1,5 @@
 import { FormEvent, useRef, useState } from "react";
+import { createParser, ParseEvent } from "eventsource-parser";
 
 import Header from "@/components/Header";
 import Button from "@/components/Button";
@@ -16,39 +17,61 @@ export default function Home() {
   const userInfo = useRef<UserInfo>(intialUserInfo);
   const [loading, setLoading] = useState(false);
   const [generatedCoverLetter, setGeneratedCoverLetter] = useState("");
+  const [apiKey, setApiKey] = useState("");
   const gereratedSection = useRef<HTMLDivElement>(null);
 
   const generate = async (e: FormEvent) => {
     e.preventDefault();
 
+    setGeneratedCoverLetter("");
     setLoading(true);
 
     try {
-      const response = await fetch("/api/generate", {
+      const response = await fetch("/api/generate/edge", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userInfo: userInfo.current }),
+        body: JSON.stringify({ userInfo: userInfo.current, apiKey }),
       });
 
-      const result = (await response.json()) as {
-        success: boolean;
-        data?: any;
-        error?: string;
-      };
-      console.log(result);
-      if (!result.success) {
-        throw new Error(result.error);
+      if (response.status !== 200 || !response.body) {
+        throw new Error("Failed to generate");
       }
 
-      setGeneratedCoverLetter(result.data.choices[0].message.content);
-      gereratedSection.current?.scrollIntoView({
-        behavior: "smooth",
-      });
+      const onParse = (event: ParseEvent) => {
+        if (event.type === "event") {
+          const data = event.data;
+
+          try {
+            const newText = JSON.parse(data).text ?? "";
+            setGeneratedCoverLetter(prevText => prevText + newText);
+          } catch (e) {
+            throw new Error("Somthing went wrong while generating");
+          }
+        }
+      };
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      const parser = createParser(onParse);
+
+      while (true) {
+        const { value, done } = await reader.read();
+
+        if (done) {
+          break;
+        }
+
+        parser.feed(decoder.decode(value));
+        gereratedSection.current?.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
     } catch (err) {
       console.log(err);
-      toast.error("Failed to Generate", { icon: "😥" });
+      const message = err instanceof Error ? err.message : "Failed to Generate";
+      toast.error(message, { icon: "😥" });
     }
     setLoading(false);
   };
