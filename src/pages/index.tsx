@@ -95,7 +95,7 @@ export default function Home() {
       <Header />
       <section className="p-4">
         <h2 className="text-[min(10vw,3.5rem)] mt-16 font-bold text-center max-w-lg min-[900px]:max-w-3xl mx-auto">
-          Generate Cover Letter Email Easly With GPT Model
+          Generate Cover Letter Email Easily With GPT Model
         </h2>
         <Button className="mx-auto my-16" onClick={focusOnFirstInput}>
           Try it now 👇
