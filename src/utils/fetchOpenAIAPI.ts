@@ -17,11 +17,14 @@ interface OpenAIStreamPayload {
   n: number;
 }
 
-const fetchAPI = async (userInfo: UserInfo, API_KEY: string | undefined) => {
+const fetchOpenAIAPI = async (
+  userInfo: UserInfo,
+  API_KEY: string | undefined
+) => {
   const OPENAI_API_KEY = API_KEY ?? process.env.OPENAI_KEY;
 
   if (!OPENAI_API_KEY) {
-    return new Response("Missing OPENAI_API_KEY", { status: 400 });
+    throw new Response("Missing OPENAI_API_KEY", { status: 400 });
   }
 
   if (
@@ -31,7 +34,7 @@ const fetchAPI = async (userInfo: UserInfo, API_KEY: string | undefined) => {
     !userInfo.companyName ||
     !userInfo.releventSkills
   ) {
-    return new Response(
+    throw new Response(
       "Missing userInfo object or one of the required fields",
       { status: 400 }
     );
@@ -82,4 +85,4 @@ const fetchAPI = async (userInfo: UserInfo, API_KEY: string | undefined) => {
   return response;
 };
 
-export default fetchAPI;
+export default fetchOpenAIAPI;
