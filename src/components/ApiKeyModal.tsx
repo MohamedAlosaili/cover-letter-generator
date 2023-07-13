@@ -37,7 +37,7 @@ const ApiKeyModal = ({ setApiKey }: ApiKeyModalProps) => {
     setApiKey(apiKey);
   };
 
-  return process.env.NODE_ENV === "development" ? (
+  return (
     <div className="absolute inset-0 z-10 grid place-items-center p-4 backdrop-blur-sm">
       <div className="relative max-w-md z-10 font-medium bg-slate-50 p-4 shadow-2xl rounded-lg border border-black/25">
         <h3 className="font-bold text-center text-2xl mb-4">Sorry 😑</h3>
@@ -77,7 +77,7 @@ const ApiKeyModal = ({ setApiKey }: ApiKeyModalProps) => {
         </p>
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default ApiKeyModal;
