@@ -4,6 +4,8 @@
 
 Generate your Cover Letter Email with the help of AI
 
+![Page screenshot](/public/page-screenshot.png)
+
 ## Motivation
 
 I used to have a hard time writing cover letters from scratch. I would always struggle to find the right phrases and structures, and my letters would often end up sounding generic. But now, I can use GPT to generate a starting point for my cover letters. I just need to make a few changes, and I'm good to go!
