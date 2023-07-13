@@ -1,12 +1,13 @@
 import { FormEvent, useRef, useState } from "react";
 import { createParser, ParseEvent } from "eventsource-parser";
+import { toast } from "react-hot-toast";
 
 import Header from "@/components/Header";
 import Button from "@/components/Button";
 import Form from "@/components/Form";
+import ApiKeyModal from "@/components/ApiKeyModal";
 
 import inputs, { UserInfo } from "../inputs";
-import { toast } from "react-hot-toast";
 
 const intialUserInfo: UserInfo = Object.assign(
   {},
@@ -90,6 +91,8 @@ export default function Home() {
     toast.success("Copied to clipboard");
   };
 
+  const disabledForm = process.env.NODE_ENV === "production" && !apiKey;
+
   return (
     <main className={`min-h-screen max-w-5xl mx-auto`}>
       <Header />
@@ -101,7 +104,14 @@ export default function Home() {
           Try it now 👇
         </Button>
       </section>
-      <Form onSubmit={generate} loading={loading} userInfo={userInfo} />
+      <div className="relative">
+        {disabledForm && <ApiKeyModal setApiKey={setApiKey} />}
+        <Form
+          onSubmit={disabledForm ? e => e.preventDefault() : generate}
+          loading={loading}
+          userInfo={userInfo}
+        />
+      </div>
       <div ref={gereratedSection}></div>
       {generatedCoverLetter && (
         <section className="max-w-3xl mx-auto p-4">
