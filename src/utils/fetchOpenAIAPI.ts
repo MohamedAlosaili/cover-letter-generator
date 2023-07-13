@@ -82,6 +82,10 @@ const fetchOpenAIAPI = async (
     body: JSON.stringify(payload),
   });
 
+  if (response.status !== 200) {
+    throw new Response(response.statusText, { status: response.status });
+  }
+
   return response;
 };
 
