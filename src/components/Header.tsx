@@ -11,7 +11,10 @@ const Header = () => (
       </span>{" "}
       Generator 📝
     </h1>
-    <a href="https://github.com/mohamedalosaili" target="_blank">
+    <a
+      href="https://github.com/MohamedAlosaili/cover-letter-generator"
+      target="_blank"
+    >
       <Button alt className="px-4 sm:px-8">
         GitHub ⭐
       </Button>
