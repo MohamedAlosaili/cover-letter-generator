@@ -15,20 +15,6 @@ export async function OpenAIStream(response: Response) {
         }
       };
 
-      // optimistic error handling
-      if (response.status !== 200) {
-        const data = {
-          status: response.status,
-          statusText: response.statusText,
-          body: await response.text(),
-        };
-        console.log(
-          `Error: recieved non-200 status code, ${JSON.stringify(data)}`
-        );
-        controller.close();
-        return;
-      }
-
       // stream response (SSE) from OpenAI may be fragmented into multiple chunks
       // this ensures we properly read chunks and invoke an event for each SSE event stream
       const parser = createParser(onParse);
