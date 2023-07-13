@@ -40,24 +40,23 @@ const fetchOpenAIAPI = async (
     );
   }
 
-  const prompt = `Generate a concise yet effective cover letter email based on the information provided:
-  - Candidate's Full Name: ${userInfo.candidateFullName}
-  - Position Being Applied For: ${userInfo.jobTitle}
+  const prompt = `You are an AI Cover Letter Email Generator. Your task is to generate a concise, professional, and engaging cover letter email that is customized to reflect the candidate's suitability for the role and company. Use the following details to create the cover letter:
+  - Candidate's Full Name: ${userInfo.candidateFullName}.
+  - Position Being Applied For: ${userInfo.jobTitle}.
   - Company Name: ${userInfo.companyName}
-  - Key Skills Relevant to the Job: ${userInfo.releventSkills}
+  - Key Skills Relevant to the Job: ${userInfo.releventSkills}.
   - Notable Achievements or Relevant Experience: ${
     userInfo.achievementsOrExperience
-  }${
-    userInfo.hiringManagerName
-      ? `\n- Recipient's Name: ${userInfo.hiringManagerName}`
-      : ""
+  }.
+  - Recipient's Name (if knwon or general): ${
+    userInfo.hiringManagerName ?? ""
   }${
     userInfo.whyThisRole
-      ? `\n- Reasons for Interest in this Role or Company: ${userInfo.whyThisRole}`
+      ? `\n- Reasons for Interest in this Role or Company: ${userInfo.whyThisRole}.`
       : ""
   }${
     userInfo.additionalInfo
-      ? `\n- Any Additional Information or Instructions: ${userInfo.additionalInfo}`
+      ? `\n- Any Additional Information or Instructions: ${userInfo.additionalInfo}.`
       : ""
   }`;
 
