@@ -7,13 +7,13 @@ export const config = {
 };
 
 export default async function handler(req: Request): Promise<Response | void> {
-  const { userInfo, API_KEY } = (await req.json()) as {
+  const { userInfo, apiKey } = (await req.json()) as {
     userInfo: UserInfo;
-    API_KEY?: string;
+    apiKey?: string;
   };
 
   try {
-    const response = await fetchOpenAIAPI(userInfo, API_KEY);
+    const response = await fetchOpenAIAPI(userInfo, apiKey);
 
     const stream = await OpenAIStream(response);
     return new Response(stream, {

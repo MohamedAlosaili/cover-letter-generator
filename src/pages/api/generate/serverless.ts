@@ -7,13 +7,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<Response | void> {
-  const { userInfo, API_KEY } = req.body as {
+  const { userInfo, apiKey } = req.body as {
     userInfo: UserInfo;
-    API_KEY?: string;
+    apiKey?: string;
   };
 
   try {
-    const response = await fetchOpenAIAPI(userInfo, API_KEY);
+    const response = await fetchOpenAIAPI(userInfo, apiKey);
 
     await OpenAIStream(response, res);
   } catch (err) {
