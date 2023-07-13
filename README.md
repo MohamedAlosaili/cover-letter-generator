@@ -1,4 +1,4 @@
-# [Cover Letter Generator](https://cover-letter-generator.vercel.app) 📝
+# [Cover Letter Generator](https://cover-letter-email-generator.vercel.app/) 📝
 
 ## Description
 
