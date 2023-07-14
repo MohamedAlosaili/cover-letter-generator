@@ -76,12 +76,7 @@ const Form = ({ userInfo, loading, ...props }: FormProps) => {
         <Tooltip hint="This controls how creative or conservative the model is when generating Cover Letters. A higher number will result in more creative results. Try default first." />
       </label>
 
-      <Button
-        alt
-        type="button"
-        className="text-sm"
-        onClick={() => setShowOptional(prev => !prev)}
-      >
+      <Button alt type="button" onClick={() => setShowOptional(prev => !prev)}>
         {showOptional ? "Hide" : "Show"} Optional Inputs
       </Button>
       <Button alt type="reset" disabled={loading}>
