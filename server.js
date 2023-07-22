@@ -12,7 +12,7 @@ app.use(express.static(path.join(process.cwd(), "public")));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("index", { inputs });
+  res.render("pages/index", { inputs });
 });
 
 app.post("/api/generate", (req, res) => {
