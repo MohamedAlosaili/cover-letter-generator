@@ -1,0 +1,9 @@
+<%- include('../partials/head.ejs', { title: `${error.message} | Cover Letter
+Generator 📝` }); %>
+
+<div class="error">
+  <span class="error__emoji">😥</span>
+  <%=error.status%> | <%= error.message%>
+</div>
+
+<%- include('../partials/footer.ejs') %>
