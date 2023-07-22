@@ -1,6 +1,10 @@
+/* Global Styles Start */
 * {
   margin: 0;
   padding: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   box-sizing: border-box;
 }
 
@@ -10,10 +14,166 @@ html {
 
 :root {
   --main-bg-color: 248 250 252;
-  --main-text-color: 0 0 0;
+  --text-color: 0 0 0;
+  --text-color-alt: 255 255 255;
+  --transition-duration: 150ms;
+  --transform-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --border-raduis: 0.5rem;
 }
 
 body {
-  min-height: 100vh;
   background-color: rgb(var(--main-bg-color) / 0.5);
 }
+
+.container {
+  min-height: 100vh;
+  max-width: 1024px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.btn {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 2rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.5;
+  cursor: pointer;
+  border: 1px solid rgb(var(--text-color, #000));
+  background-color: rgb(var(--text-color, #000));
+  color: rgb(var(--text-color-alt, #fff));
+  border-radius: var(--border-raduis, 0.5rem);
+  transition-property: transform, shadow, background-color;
+  transition-duration: var(--transition-duration, 0.15s);
+  transition-timing-function: var(
+    --transform-timing-function,
+    cubic-bezier(0.4, 0, 0.2, 1)
+  );
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  will-change: transform, shadow;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.1), 0 2px 4px 1px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn--alt {
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+.btn--alt:hover {
+  background-color: rgb(var(--text-color, 0 0 0) / 0.05);
+}
+
+/* Small devices breakpoint from TailwindCSS */
+@media (min-width: 640px) {
+}
+/* Global Styles End */
+/* Header Style Start */
+.header {
+  padding: 1.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid rgb(var(--text-color, 0 0 0) / 0.05);
+}
+
+.header__title {
+  font-weight: 500;
+}
+
+.header__first-letter {
+  margin-right: -0.25rem;
+}
+
+.header__portion {
+  display: none;
+}
+
+.btn--thin {
+  padding: 0.5rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .header__first-letter {
+    margin-right: 0;
+  }
+
+  .header__portion {
+    display: inline;
+  }
+
+  .btn--thin {
+    padding: 0.5rem 2rem;
+  }
+}
+/* Header Style End */
+
+/* Main Style Start */
+.main {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+.main__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main__title {
+  font-size: min(10vw, 3.5rem);
+  text-align: center;
+  max-width: 32rem;
+  margin: 3rem auto 2rem;
+}
+
+@media (min-width: 900px) {
+  .main__title {
+    max-width: 48rem;
+  }
+}
+
+/* Main Style End */
+
+/* Footer Style Start */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 1.5rem 1rem;
+  border-top: 2px solid rgb(var(--text-color, 0 0 0) / 0.05);
+}
+
+.footer__link {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 640px) {
+  .footer {
+    font-size: 1rem;
+  }
+}
+/* Footer Style End */
