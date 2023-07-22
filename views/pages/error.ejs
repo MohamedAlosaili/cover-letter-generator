@@ -1,9 +1,20 @@
-<%- include('../partials/head.ejs', { title: `${error.message} | Cover Letter
-Generator 📝` }); %>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs', { title: `${error.message} | Cover Letter
+  Generator 📝` }); %>
 
-<div class="error">
-  <span class="error__emoji">😥</span>
-  <%=error.status%> | <%= error.message%>
-</div>
+  <body>
+    <div class="container">
+      <%- include('../partials/header.ejs') %>
 
-<%- include('../partials/footer.ejs') %>
+      <main class="main">
+        <div class="error">
+          <span class="error__emoji">😥</span>
+          <%=error.status%> | <%= error.message%>
+        </div>
+      </main>
+
+      <%- include('../partials/footer.ejs') %>
+    </div>
+  </body>
+</html>
