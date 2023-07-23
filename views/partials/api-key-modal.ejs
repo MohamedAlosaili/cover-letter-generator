@@ -1,0 +1,35 @@
+<div class="modal" data-modal>
+  <div class="modal__wrapper">
+    <h3 class="modal__title">Sorry 😑</h3>
+    <p class="modal__text">
+      Because OpenAI is not available in my country, I have limited access to
+      the API usage (free grant only), but you can provide your API key below to
+      use the generator.
+    </p>
+
+    <form class="modal__form" data-modal-form>
+      <input
+        type="text"
+        placeholder="OpenAI API Key."
+        class="form__input"
+        data-api-key
+      />
+      <label class="modal__label">
+        Save in Browser for next time?
+        <input type="checkbox" class="modal__checkbox" data-save-in-browser />
+      </label>
+      <Button class="btn">Save</Button>
+    </form>
+    <p class="modal__text--small">
+      If you don&#39;t have a key, go to
+      <a
+        class="modal__link"
+        target="_blank"
+        href="https://platform.openai.com/docs/api-reference/authentication"
+      >
+        API Key</a
+      >
+      page and get one.
+    </p>
+  </div>
+</div>
