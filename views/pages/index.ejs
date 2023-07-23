@@ -1,73 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head.ejs'); %>
-  <body>
-    <div class="container">
-      <%- include('../partials/header.ejs'); %>
+<%- include('../partials/head.ejs'); %>
 
-      <main class="main">
-        <div class="main__top">
-          <h1 class="main__title">
-            Generate Cover Letter Email Easily With GPT Model
-          </h1>
-          <button class="btn">Try it now 👇</button>
-        </div>
-        <section class="main__form__container">
-          <form class="form">
-            <div class="form__range">
-                <label for="tempreture"> 
-                    Model Creativity 
-                </label>
-                <input class="range__input" type="range" name="tempreture" min="5" max="10" value="5" />
-                <p>Default</p>
-                <div class="hint__trigger">!</div>
-                <p class="label__hint">This controls how creative or conservative the model is when generating Cover Letters. A higher number will result in more creative results. Try default first.</p>
-            </div>
+<body>
+  <div class="container">
+    <%- include('../partials/header.ejs'); %>
 
-            <% inputs.forEach(input => { %>
-            <div
-              class="form__block <%= !input.required ? 'form__block--optional' : '' %> <%= input.inputType !== 'input' ? 'form__element--large' : '' %>"
-            >
-              <label class="form__label" for="<%=input.name%>">
-                <p class="label__text">
-                    <%= input.label %> 
-                    <%- input.required ? '<span class="label__required">*</span>' : '' %> 
-                </p>
-                <% if(input.hint) { %>
-                    <div class="hint__trigger">!</div>
-                    <p class="label__hint"><%=input.hint%></p>
-                <% } %>
+    <main class="main">
+      <div class="main__top">
+        <h1 class="main__title">
+          Generate Cover Letter Email Easily With GPT Model
+        </h1>
+        <button class="btn" data-focus-btn>Try it now 👇</button>
+      </div>
+      <section class="main__container">
+        <form class="form" data-form>
+          <div class="form__range">
+            <label for="tempreture">
+              Model Creativity
             </label>
-              <% if(input.inputType === "input") { %>
-              <input
-              class="form__input"
-              type="text"
-              id="<%=input.name%>"
-              name="<%=input.name%>"
-              placeholder="<%=input.placeholder%>"
-              <%= input.required ? 'required' : '' %>
-              />
-              <% } else { %>
-              <textarea
-                class="form__input form__input--large"
-                id="<%=input.name%>"
-                name="<%=input.name%>"
-                placeholder="<%=input.placeholder%>"
-                <%= input.required ? 'required' : '' %>
-              ></textarea>
-              <% } %>
-            </div>
-            <% }) %>
-            <button class="btn btn--alt" type="button">
-              Show Optional Inputs
-            </button>
-            <button class="btn btn--alt" type="reset">Reset Fields</button>
-            <button class="btn form__element--large">Generate</button>
-          </form>
-        </section>
-      </main>
+            <input class="range__input" type="range" name="tempreture" min="5" max="10" value="5" data-input="range" />
+            <p data-range-value class="range__value">Default</p>
+            <div class="hint__trigger">!</div>
+            <p class="label__hint">This controls how creative or conservative the model is when generating Cover Letters. A higher number will result in more creative results. Try default first.</p>
+          </div>
 
-      <%- include('../partials/footer.ejs') %>
-    </div>
-  </body>
+          <% inputs.forEach(input => { %>
+          <div class="form__block <%= !input.required ? 'form__block--optional' : '' %> <%= input.inputType !== 'input' ? 'form__element--large' : '' %>" <%=!input.required ? 'data-optional-input' : ''%>>
+            <label class="form__label" for="<%=input.name%>">
+              <p class="label__text">
+                <%= input.label %>
+                <%- input.required ? '<span class="label__required">*</span>' : '' %>
+              </p>
+              <% if(input.hint) { %>
+              <div class="hint__trigger">!</div>
+              <p class="label__hint"><%=input.hint%></p>
+              <% } %>
+            </label>
+            <% if(input.inputType === "input") { %>
+            <input data-input maxlength="<%= input.maxLength %>" class="form__input" type="text" id="<%=input.name%>" name="<%=input.name%>" placeholder="<%=input.placeholder%>" <%= input.required ? 'required' : '' %> />
+            <% } else { %>
+            <textarea data-input maxlength="<%= input.maxLength %>" class="form__input form__input--large" id="<%=input.name%>" name="<%=input.name%>" placeholder="<%=input.placeholder%>" <%= input.required ? 'required' : '' %>></textarea>
+            <% } %>
+            <div class="input__length" data-maxlength="<%= input.maxLength %>" data-maxlength-name="<%=input.name%>">0 / <%= input.maxLength %></div>
+          </div>
+          <% }) %>
+          <button class="btn btn--alt" type="button" data-optional-trigger>
+            Show Optional Inputs
+          </button>
+          <button class="btn btn--alt" type="reset">Reset Fields</button>
+          <button class="btn form__element--large">Generate</button>
+        </form>
+      </section>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </div>
+</body>
+
 </html>
