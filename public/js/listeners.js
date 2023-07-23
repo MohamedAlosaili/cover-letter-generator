@@ -33,6 +33,11 @@ formInputs.forEach(input => {
 // Show and hide optional fields
 const optionalTrigger = document.querySelector("[data-optional-trigger]");
 const optionalInputs = document.querySelectorAll("[data-optional-input]");
-optionalTrigger.addEventListener("click", () => {
+optionalTrigger.addEventListener("click", e => {
+  e.target.dataset.optionalTrigger =
+    e.target.dataset.optionalTrigger === "true" ? "false" : "true";
+  e.target.innerText = `${
+    e.target.dataset.optionalTrigger === "true" ? "Hide" : "Show"
+  } Optional Inputs`;
   optionalInputs.forEach(input => input.classList.toggle("show"));
 });
