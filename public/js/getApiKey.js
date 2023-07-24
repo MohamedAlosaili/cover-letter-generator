@@ -13,12 +13,7 @@ export function getApiKey() {
     return modalForm.addEventListener("submit", onSubmit);
   }
 
-  if (apiKeyFromLocalStorage) {
-    apiKey = apiKeyFromLocalStorage;
-  }
-  if (apiKeyFromSessionStorage) {
-    apiKey = apiKeyFromSessionStorage;
-  }
+  apiKey = apiKeyFromSessionStorage || apiKeyFromLocalStorage;
 
   modalForm.removeEventListener("submit", onSubmit);
   modal.remove();
