@@ -34,8 +34,18 @@
             Show Optional Inputs
           </button>
           <button class="btn btn--alt" type="reset">Reset Fields</button>
-          <button class="btn form__element--large">Generate</button>
+          <button class="btn form__element--large" data-submit-btn>
+            Generate
+          </button>
         </form>
+      </section>
+      <section class="generated" data-generated hidden>
+        <h2 class="generated__title">Generated Cover Letter</h2>
+        <div class="generated__text">
+          <span class="generated__tip">Click To Copy 📋</span>
+          <div data-generated-text></div>
+          <div data-generated-text-bottom></div>
+        </div>
       </section>
     </main>
 
