@@ -41,3 +41,10 @@ optionalTrigger.addEventListener("click", e => {
   } Optional Inputs`;
   optionalInputs.forEach(input => input.classList.toggle("show"));
 });
+
+// Copy generated Text, only if the response is finished
+export const generatedText = document.querySelector("[data-generated-text]");
+generatedText.addEventListener("click", e => {
+  if (loading) return;
+  navigator.clipboard.writeText(e.currentTarget.textContent);
+});
