@@ -30,11 +30,13 @@ OPENAI_KEY=# Your API KEY
 Run the development server:
 
 ```bash
-npm run dev
+npm run start
 # or
-yarn dev
+yarn start
 # or
-pnpm dev
+pnpm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+> You can add [nodemon](https://www.npmjs.com/package/nodemon) to restart the server when file changes are detected automatically.
+
+Open [http://localhost:5000](http://localhost:5000)
