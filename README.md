@@ -36,3 +36,5 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
+
+### [For practice, I created a version of this project with Nodejs + ejs and Vanilla-js](https://github.com/MohamedAlosaili/cover-letter-generator/tree/vanillajs)
