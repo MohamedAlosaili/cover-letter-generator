@@ -5,7 +5,7 @@ const defaultOptions = {
   pos: "top center", // "top left" | "top right" | "bottom left" | "bottom right" | "bottom center"
 };
 
-// Setting
+// Create new instance with optional config
 export const toast = Toast();
 
 function Toast(options = {}) {
@@ -24,7 +24,9 @@ function Toast(options = {}) {
                 <p class="toast__text">${msg}</p>
         `;
 
-    toastStack.insertAdjacentElement("afterbegin", toast);
+    const where = pos.includes("bottom") ? "beforeend" : "afterbegin";
+    toastStack.insertAdjacentElement(where, toast);
+
     setTimeout(() => toast.classList.add("close"), duration);
     toast.addEventListener("animationend", removeElement);
 
