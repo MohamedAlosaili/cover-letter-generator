@@ -1,6 +1,6 @@
-// import { createParser } from "eventsource-parser";
 import { formInputs, generatedText } from "./listeners.js";
 import { getApiKey, apiKey } from "./getApiKey.js";
+import { toast } from "./toast.js";
 
 const form = document.querySelector("[data-form]");
 const submitBtn = form.querySelector("[data-submit-btn]");
@@ -10,7 +10,7 @@ getApiKey();
 form.addEventListener("submit", generate);
 
 // Global state
-let loading = false;
+export let loading = false;
 let generatedCoverLetter = "";
 
 async function generate(e) {
@@ -18,7 +18,7 @@ async function generate(e) {
   generatedSection.hidden = true;
 
   if (!apiKey) {
-    return;
+    return toast.add("You forgot to add your API key", "😉");
   }
 
   loading = true;
