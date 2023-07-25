@@ -1,3 +1,5 @@
+import { toast } from "./toast.js";
+
 const modal = document.querySelector("[data-modal]");
 const modalForm = document.querySelector("[data-modal-form]");
 const apiKeyInput = document.querySelector("[data-api-key]");
@@ -24,7 +26,7 @@ function onSubmit(e) {
   const apiKey = apiKeyInput.value;
 
   if (!apiKey.trim()) {
-    return;
+    return toast.add("You forgot to add your API key", "😉");
   }
 
   const storage = saveToLocalStorage.checked ? localStorage : sessionStorage;
