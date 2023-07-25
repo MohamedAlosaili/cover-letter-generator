@@ -1,3 +1,6 @@
+import { loading } from "./index.js";
+import { toast } from "./toast.js";
+
 const focusOnFirestInputBtn = document.querySelector("[data-focus-btn]");
 // Focus on the first input when clicking on 'Try it now 👇` Button
 focusOnFirestInputBtn.addEventListener("click", () => {
@@ -47,4 +50,5 @@ export const generatedText = document.querySelector("[data-generated-text]");
 generatedText.addEventListener("click", e => {
   if (loading) return;
   navigator.clipboard.writeText(e.currentTarget.textContent);
+  toast.add("Copied to clipboard", "✔");
 });
