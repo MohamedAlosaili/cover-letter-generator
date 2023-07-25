@@ -4,7 +4,7 @@
 
 Generate your Cover Letter Email with the help of AI
 
-> This version of the [main branch](/MohamedAlosaili/cover-letter-generator) was created with Nodejs + ejs and vanilla-js
+> This version of the [main branch](https://github.com//MohamedAlosaili/cover-letter-generator) was created with Nodejs + ejs and vanilla-js
 
 ![Page screenshot](/public/assets/page-screenshot.png)
 
